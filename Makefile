@@ -8,7 +8,7 @@ all:
 	rebar3 compile;
 #	mkdir ebin;
 #	mv _build/default/lib/* ebin;
-	git add -f .;
+	git add .;
 	git commit -m $(m);
 	git push;
 	echo Ok there you go!
