@@ -6,9 +6,9 @@ all:
 	rm -rf ebin
 	rm -rf rebar.lock;
 	rebar3 compile;
-	mkdir ebin;
-	mv _build/default/lib/* ebin;
-	git add -f *;
+#	mkdir ebin;
+#	mv _build/default/lib/* ebin;
+	git add -f .;
 	git commit -m $(m);
 	git push;
 	echo Ok there you go!
