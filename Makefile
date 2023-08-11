@@ -6,9 +6,10 @@ all:
 	rm -rf ebin
 	rm -rf rebar.lock;
 	rebar3 compile;
-#	mkdir ebin;
-#	mv _build/default/lib/* ebin;
-	git add .;
+	mkdir ebin;
+	cp _build/default/lib/*/ebin/* ebin;
+	rm -rf _build*;
+	git add -f *;
 	git commit -m $(m);
 	git push;
 	echo Ok there you go!
@@ -21,7 +22,9 @@ build:
 #	mkdir ebin;		
 	rebar3 compile;
 	mkdir ebin;
-	mv _build/default/lib/* ebin;
+	cp _build/default/lib/*/ebin/* ebin;
+	rm -rf _build*;
+	rm -rf ebin;
 	rm -rf  test_ebin;
 clean:
 	rm -rf  *~ */*~ src/*.beam test/*.beam test_ebin erl_cra*;
@@ -47,9 +50,10 @@ eunit:
 #	compile
 	rebar3 compile;
 	mkdir ebin;
-	mv _build/default/lib/* ebin;
+	cp _build/default/lib/*/ebin/* ebin;
+	rm -rf _build*;
 #	Application specific
-	erl -pa ebin/etcd_provider/ebin -pa test_ebin\
+	erl -pa ebin -pa test_ebin\
 	    -sname do_test\
 	    -run $(m) start\
 	    -setcookie test_cookie

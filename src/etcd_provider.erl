@@ -65,14 +65,14 @@ ping()->
 	  {stop, Reason :: term()} |
 	  ignore.
 init([]) ->
-    {ok,Applications}=file:list_dir(?BuildPath),
-    io:format("Applications ~p~n",[{Applications,?MODULE,?FUNCTION_NAME,?LINE}]),
-    EbinPaths=[filename:join([?BuildPath,Application,"ebin"])||Application<-Applications],
-    io:format("EbinPaths ~p~n",[{EbinPaths,?MODULE,?FUNCTION_NAME,?LINE}]),
-    EbinPathsToAdd=[EbinPath||EbinPath<-EbinPaths,
-			 true==filelib:is_dir(EbinPath)],
-    ok=code:add_paths(EbinPathsToAdd),
-    io:format("EbinPathsToAdd ~p~n",[{EbinPathsToAdd,?MODULE,?FUNCTION_NAME,?LINE}]),
+%    {ok,Applications}=file:list_dir(?BuildPath),
+%    io:format("Applications ~p~n",[{Applications,?MODULE,?FUNCTION_NAME,?LINE}]),
+%    EbinPaths=[filename:join([?BuildPath,Application,"ebin"])||Application<-Applications],
+ %   io:format("EbinPaths ~p~n",[{EbinPaths,?MODULE,?FUNCTION_NAME,?LINE}]),
+ %   EbinPathsToAdd=[EbinPath||EbinPath<-EbinPaths,
+%			 true==filelib:is_dir(EbinPath)],
+%    ok=code:add_paths(EbinPathsToAdd),
+%    io:format("EbinPathsToAdd ~p~n",[{EbinPathsToAdd,?MODULE,?FUNCTION_NAME,?LINE}]),
     ok=application:start(log),
     ok=application:start(etcd),
     {ok, #state{}}.
