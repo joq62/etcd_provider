@@ -17,8 +17,9 @@ build:
 	rm -rf ebin
 	rm -rf rebar.lock;
 #	mkdir ebin;		
-	rebar3 compile;	
-#	cp _build/default/lib/*/ebin/* ebin;
+	rebar3 compile;
+	mkdir ebin;
+	mv _build/default/lib/* ebin;
 	rm -rf  test_ebin;
 clean:
 	rm -rf  *~ */*~ src/*.beam test/*.beam test_ebin erl_cra*;
@@ -41,9 +42,12 @@ eunit:
 	mkdir test_ebin;
 	cp test/*.app test_ebin;
 	erlc -I include -I /home/joq62/erlang/include -o test_ebin test/*.erl;
-	rebar3 compile;	
+#	compile
+	rebar3 compile;
+	mkdir ebin;
+	mv _build/default/lib/* ebin;
 #	Application specific
-	erl -pa _build/default/lib/etcd_provider/ebin -pa test_ebin\
+	erl -pa ebin/etcd_provider/ebin -pa test_ebin\
 	    -sname do_test\
 	    -run $(m) start\
 	    -setcookie test_cookie

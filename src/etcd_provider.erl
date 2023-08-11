@@ -10,7 +10,7 @@
 
 -behaviour(gen_server). 
 
--define(BuildPath,"_build/default/lib").
+-define(BuildPath,"ebin").
 
 %% API
 -export([ping/0]).
