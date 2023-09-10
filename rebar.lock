@@ -1,6 +1,6 @@
 [{<<"etcd">>,
   {git,"https://github.com/joq62/etcd.git",
-       {ref,"c332b1c44f887ccb1d3b553d61c3220880eba78c"}},
+       {ref,"c0edae2dd2ac423feeda517519eea5d42d9a7ddc"}},
   0},
  {<<"lib_sd">>,
   {git,"https://github.com/joq62/lib_sd.git",
